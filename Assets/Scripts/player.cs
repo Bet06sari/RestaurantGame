@@ -27,6 +27,7 @@ public class player : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        // github push denemesi
         Chinese chinese = other.GetComponent<Chinese>();
         Mexico mexico = other.GetComponent<Mexico>();
         Italy italy = other.GetComponent<Italy>();
