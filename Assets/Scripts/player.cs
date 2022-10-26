@@ -13,6 +13,14 @@ public class player : MonoBehaviour
     private Rigidbody _rigidbody;
 
     [HideInInspector]public string _currentName;
+    
+    bool alive = true;
+    public GameObject GameOver;
+    public GameObject TapToPlayScreen;
+    public GameObject NextLevelScreen;
+    public GameObject fireworks;
+    private bool _tapToStart;
+    public bool gameFinish;
 
 
     private void Awake()
@@ -22,7 +30,31 @@ public class player : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        if (!alive || !_tapToStart) return;
+
+        if (!gameFinish)
+        {
+            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(Vector3.forward * 0 * Time.deltaTime);
+            animator.SetTrigger("idle");
+            NextLevelScreen.SetActive(true);
+            fireworks.SetActive(true);
+        }
+        
+        
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && !_tapToStart)
+        {
+            TapToPlayScreen.SetActive(false);
+            _tapToStart = true;
+            animator.SetTrigger("walk");
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -57,6 +89,11 @@ public class player : MonoBehaviour
         if (italy)
         {
             _currentName = italy.names;
+        }
+        
+        if (other.tag.Equals("finish"))
+        {
+            gameFinish = true;
         }
     }
     
