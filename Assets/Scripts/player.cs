@@ -9,7 +9,6 @@ public class player : MonoBehaviour
     public static player instance;
     [SerializeField] private GameObject chineseButton, mexicoButton, italyButton;
     public float moveSpeed = 1.5f;
-    public Transform rayOrigin;
     private Rigidbody _rigidbody;
 
     [HideInInspector]public string _currentName;
@@ -41,7 +40,6 @@ public class player : MonoBehaviour
             transform.Translate(Vector3.forward * 0 * Time.deltaTime);
             animator.SetTrigger("idle");
             NextLevelScreen.SetActive(true);
-            fireworks.SetActive(true);
         }
         
         
@@ -94,6 +92,11 @@ public class player : MonoBehaviour
         if (other.tag.Equals("finish"))
         {
             gameFinish = true;
+        }
+        
+        if (other.tag.Equals("fireworks"))
+        {
+            fireworks.SetActive(true);
         }
     }
     
