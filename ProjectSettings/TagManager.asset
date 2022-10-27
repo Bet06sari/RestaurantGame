@@ -9,6 +9,8 @@ TagManager:
   - italyan
   - finish
   - fireworks
+  - chineseDoor
+  - mexicoDoor
   layers:
   - Default
   - TransparentFX

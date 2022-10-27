@@ -21,6 +21,8 @@ public class player : MonoBehaviour
     private bool _tapToStart;
     public bool gameFinish;
 
+    public AudioSource ChineseDoor, MexicoDoor, highHeels;
+
 
     private void Awake()
     {
@@ -34,11 +36,13 @@ public class player : MonoBehaviour
         if (!gameFinish)
         {
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+            //highHeels.Play();
         }
         else
         {
             transform.Translate(Vector3.forward * 0 * Time.deltaTime);
             animator.SetTrigger("idle");
+            highHeels.Stop();
             NextLevelScreen.SetActive(true);
         }
         
@@ -52,18 +56,28 @@ public class player : MonoBehaviour
             TapToPlayScreen.SetActive(false);
             _tapToStart = true;
             animator.SetTrigger("walk");
+            highHeels.Play();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // github push denemesi
         Chinese chinese = other.GetComponent<Chinese>();
         Mexico mexico = other.GetComponent<Mexico>();
         Italy italy = other.GetComponent<Italy>();
         if (chinese || mexico || italy)
         {
             _currentName = null;
+        }
+        
+        if (other.tag.Equals("chineseDoor"))
+        {
+            ChineseDoor.Stop();
+        }
+        
+        if (other.tag.Equals("mexicoDoor"))
+        {
+            MexicoDoor.Stop();
         }
     }
 
@@ -97,6 +111,16 @@ public class player : MonoBehaviour
         if (other.tag.Equals("fireworks"))
         {
             fireworks.SetActive(true);
+        }
+        
+        if (other.tag.Equals("chineseDoor"))
+        {
+            ChineseDoor.Play();
+        }
+        
+        if (other.tag.Equals("mexicoDoor"))
+        {
+            MexicoDoor.Play();
         }
     }
     
