@@ -21,7 +21,7 @@ public class player : MonoBehaviour
     private bool _tapToStart;
     public bool gameFinish;
 
-    public AudioSource ChineseDoor, MexicoDoor, highHeels;
+    public AudioSource highHeels;
 
 
     private void Awake()
@@ -41,7 +41,7 @@ public class player : MonoBehaviour
         else
         {
             transform.Translate(Vector3.forward * 0 * Time.deltaTime);
-            animator.SetTrigger("idle");
+            animator.SetBool("victory",true);
             highHeels.Stop();
             NextLevelScreen.SetActive(true);
         }
@@ -70,15 +70,6 @@ public class player : MonoBehaviour
             _currentName = null;
         }
         
-        if (other.tag.Equals("chineseDoor"))
-        {
-            ChineseDoor.Stop();
-        }
-        
-        if (other.tag.Equals("mexicoDoor"))
-        {
-            MexicoDoor.Stop();
-        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -111,16 +102,6 @@ public class player : MonoBehaviour
         if (other.tag.Equals("fireworks"))
         {
             fireworks.SetActive(true);
-        }
-        
-        if (other.tag.Equals("chineseDoor"))
-        {
-            ChineseDoor.Play();
-        }
-        
-        if (other.tag.Equals("mexicoDoor"))
-        {
-            MexicoDoor.Play();
         }
     }
     

@@ -6,6 +6,7 @@ using UnityEngine;
 public class Mexico : MonoBehaviour
 {
     [HideInInspector] public string names="m";
+    //[SerializeField] private Animator anim;
     
     public AudioSource MexicoMusic;
     private void OnTriggerEnter(Collider other)
@@ -13,7 +14,8 @@ public class Mexico : MonoBehaviour
         if (other.tag.Equals("Player"))
         {
             MexicoMusic.Play();
-
+            //anim.SetTrigger("mexicoTrigger");
+            
         }
     }
 
