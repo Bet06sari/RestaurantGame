@@ -59,7 +59,7 @@ public class player : MonoBehaviour
             highHeels.Play();
         }
     }
-
+//test harun
     private void OnTriggerExit(Collider other)
     {
         Chinese chinese = other.GetComponent<Chinese>();
