@@ -48,7 +48,7 @@ public class player : MonoBehaviour
         
         
     }
-
+//github denemesi
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && !_tapToStart)
