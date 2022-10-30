@@ -14,8 +14,8 @@ public class EndOfLevel : MonoBehaviour
     
     void Start()
     {
-        maxDistance = 230;
-        LevelFillingBar.fillAmount = 0.3f;
+        maxDistance = 200;
+        LevelFillingBar.fillAmount = 0.2f;
     }
 
     void Update()

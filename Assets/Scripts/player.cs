@@ -21,7 +21,7 @@ public class player : MonoBehaviour
     private bool _tapToStart;
     public bool gameFinish;
 
-    public AudioSource highHeels;
+    public AudioSource highHeels, win;
 
 
     private void Awake()
@@ -35,8 +35,8 @@ public class player : MonoBehaviour
 
         if (!gameFinish)
         {
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-            //highHeels.Play();
+            //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+            transform.position += transform.forward* moveSpeed *Time.deltaTime;
         }
         else
         {
@@ -97,6 +97,7 @@ public class player : MonoBehaviour
         if (other.tag.Equals("finish"))
         {
             gameFinish = true;
+            win.Play();
         }
         
         if (other.tag.Equals("fireworks"))
