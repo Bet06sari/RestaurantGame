@@ -49,4 +49,48 @@ public class UIManager : MonoBehaviour
             animPlayer.SetTrigger("isFalse");
         }
     }
+    
+    public void HawaiiButton()
+    {
+        if (player.instance._currentName=="h")
+        {
+         Debug.Log("t");
+         animPlayer.SetTrigger("isTrue");
+        }
+        else
+        {
+             Debug.Log("f");
+             animPlayer.SetTrigger("isFalse");
+        }
+    }
+    
+    public void EtiyopyaButton()
+    {
+        if (player.instance._currentName=="e")
+        {
+            Debug.Log("t");
+            animPlayer.SetTrigger("isTrue");
+            
+        }
+        else
+        {
+            Debug.Log("f");
+            animPlayer.SetTrigger("isFalse");
+        }
+    }
+    
+    public void AbdButton()
+    {
+        if (player.instance._currentName=="a")
+        {
+            Debug.Log("t");
+            animPlayer.SetTrigger("isTrue");
+            
+        }
+        else
+        {
+            Debug.Log("f");
+            animPlayer.SetTrigger("isFalse");
+        }
+    }
 }

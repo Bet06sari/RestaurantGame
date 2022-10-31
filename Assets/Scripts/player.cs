@@ -48,7 +48,7 @@ public class player : MonoBehaviour
         
         
     }
-//github denemesi
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && !_tapToStart)
@@ -59,7 +59,7 @@ public class player : MonoBehaviour
             highHeels.Play();
         }
     }
-//test harun
+
     private void OnTriggerExit(Collider other)
     {
         Chinese chinese = other.GetComponent<Chinese>();

@@ -11,6 +11,9 @@ TagManager:
   - fireworks
   - chineseDoor
   - mexicoDoor
+  - hawai
+  - abd
+  - etiyopya
   layers:
   - Default
   - TransparentFX
