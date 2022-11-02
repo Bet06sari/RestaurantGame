@@ -7,7 +7,7 @@ public class player : MonoBehaviour
 {
     Animator animator { get {return GetComponent<Animator>(); } }
     public static player instance;
-    [SerializeField] private GameObject chineseButton, mexicoButton, italyButton;
+    [SerializeField] private GameObject goAhead ;
     public float moveSpeed = 1.5f;
     private Rigidbody _rigidbody;
 
@@ -20,6 +20,7 @@ public class player : MonoBehaviour
     public GameObject fireworks;
     private bool _tapToStart;
     public bool gameFinish;
+    
 
     public AudioSource highHeels, win;
 
@@ -36,7 +37,7 @@ public class player : MonoBehaviour
         if (!gameFinish)
         {
             //transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-            transform.position += transform.forward* moveSpeed *Time.deltaTime;
+            transform.position += goAhead.transform.forward* moveSpeed *Time.deltaTime;
         }
         else
         {
@@ -65,7 +66,10 @@ public class player : MonoBehaviour
         Chinese chinese = other.GetComponent<Chinese>();
         Mexico mexico = other.GetComponent<Mexico>();
         Italy italy = other.GetComponent<Italy>();
-        if (chinese || mexico || italy)
+        Hawai hawai = other.GetComponent<Hawai>();
+        Abd abd = other.GetComponent<Abd>();
+        Etiyopya etiyopya = other.GetComponent<Etiyopya>();
+        if (chinese || mexico || italy || hawai || abd || etiyopya)
         {
             _currentName = null;
         }
@@ -77,6 +81,9 @@ public class player : MonoBehaviour
         Chinese chinese = other.GetComponent<Chinese>();
         Mexico mexico = other.GetComponent<Mexico>();
         Italy italy = other.GetComponent<Italy>();
+        Hawai hawai = other.GetComponent<Hawai>();
+        Abd abd = other.GetComponent<Abd>();
+        Etiyopya etiyopya = other.GetComponent<Etiyopya>();
         if (chinese)
         {
             _currentName = chinese.names;
@@ -92,6 +99,21 @@ public class player : MonoBehaviour
         if (italy)
         {
             _currentName = italy.names;
+        }
+        
+        if (hawai)
+        {
+            _currentName = hawai.names;
+        }
+        
+        if (abd)
+        {
+            _currentName = abd.names;
+        }
+        
+        if (etiyopya)
+        {
+            _currentName = etiyopya.names;
         }
         
         if (other.tag.Equals("finish"))
